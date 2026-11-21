@@ -15,14 +15,25 @@ assessmentButton.addEventListener( // イベント検知設定の追加
 
     // 診断結果表示エリアの作成 
     resultDvision.innerText = ''; // divタグを空文字で上書きすることで、空にしている
-    const header = document.createElement('h3'); // h3タグの作成
-    header.innerText = '診断結果'; // タグの内側のテキストを設定
-    resultDvision.appendChild(header); // divタグの子要素として設定
 
+    // headerDivison の作成
+    const headerDivision = document.createElement('div'); // divタグの作成
+    headerDivision.setAttribute('class', 'card-header text-bg-primary');
+    headerDivision.innerText = '診断結果'; // タグの内側のテキストを設定
+    resultDvision.appendChild(headerDivision); // divタグの子要素として設定
+
+    // bodyDivision の作成
+    const bodyDivision = document.createElement('div') // divタグの作成
+    bodyDivision.setAttribute('class', 'card-body'); // bootstrap用のclassを設定
     const paragraph = document.createElement('P'); // pタグの作成
+    paragraph.setAttribute('class', 'card-text'); // class設定
     const result = assessment(userName); // 診断結果を作成
     paragraph.innerText = result; // pタグの内側のテキストを設定
-    resultDvision.appendChild(paragraph); // divタグの子要素としてpタグを追加
+    bodyDivision.appendChild(paragraph);
+    resultDvision.appendChild(bodyDivision); // divタグの子要素としてpタグを追加
+
+    // resultDivision にも　Bootstrap のスタイルを適用する
+    resultDvision.setAttribute('class', 'card');
 
     // ポストエリアの作成
     postDvision.innerText = ''; // postのdivタグも空にする
